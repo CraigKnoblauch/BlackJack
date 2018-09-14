@@ -1,2 +1,2 @@
-# BlackJack
-This project both implements a black jack environment, and proposes an AI agent to interact with the environment
+# Raymond
+Raymond is an AI agent capable of playing a game of black jack
