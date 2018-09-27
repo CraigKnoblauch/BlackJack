@@ -39,3 +39,15 @@ Yes Unfortunately I don't know how this game is played. I'll list how to game is
 6. If the dealer's hand sums to 17 or greater, the dealer must "stand". Otherwise, the dealer must "hit" 
 7. Repeat 6 until the dealer "stands" or "busts"
 8. If this step is reached, both the player and the dealer are standing. The player/dealer who's hand's sum is closest to 21, wins.
+
+# Black Jack environment
+* Inherit gym.env
+
+## What will the render look like?
+* X will represent a face-down card
+```
+Dealer(): A, X
+Player(12): 4, 8
+```
+
+
