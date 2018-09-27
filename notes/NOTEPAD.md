@@ -10,7 +10,6 @@ Yes Unfortunately I don't know how this game is played. I'll list how to game is
     * "hit": The player requests a card from the dealer to be added to his hand
         * After a "hit", the player must decide if he wants to "hit" again or "stay"
     * "stay": The player forfeits his turn to the other players and/or the dealer
-    * "fold": The player forfeits the game and accepts the loss
 
 ## Abilities and Requirements of the Dealer
 * Dealer is responsible for responding to the requests of the player
@@ -32,13 +31,13 @@ Yes Unfortunately I don't know how this game is played. I'll list how to game is
 1. Dealer deals 2 cards, face-up, to the player
     * If the sum of these cards is 21, the player automatically wins
 2. Dealer deasl 2 cards, one face-up and one face-down, to himself
-3. The player decides to "hit" or "stand". 
-    * If the player chooses to "hit" and does not "bust", the player must choose again to either "hit" or "stand"
-4. Repeat 3 until player "busts" (player loses), achieves a sum of 21 (player wins), or player chooses to "stand"
+3. The player decides to "hit" or "stay". 
+    * If the player chooses to "hit" and does not "bust", the player must choose again to either "hit" or "stay"
+4. Repeat 3 until player "busts" (player loses), achieves a sum of 21 (player wins), or player chooses to "stay"
 5. Dealer reveals face-down card.
-6. If the dealer's hand sums to 17 or greater, the dealer must "stand". Otherwise, the dealer must "hit" 
-7. Repeat 6 until the dealer "stands" or "busts"
-8. If this step is reached, both the player and the dealer are standing. The player/dealer who's hand's sum is closest to 21, wins.
+6. If the dealer's hand sums to 17 or greater, the dealer must "stay". Otherwise, the dealer must "hit" 
+7. Repeat 6 until the dealer "stays" or "busts"
+8. If this step is reached, both the player and the dealer are staying. The player/dealer who's hand's sum is closest to 21, wins.
 
 # Black Jack environment
 * Inherit gym.env
@@ -49,5 +48,11 @@ Yes Unfortunately I don't know how this game is played. I'll list how to game is
 Dealer(): A, X
 Player(12): 4, 8
 ```
+## What are the actions?
+`["hit", "stay"]`
+
+## What is the state definition?
+Note that the second element of `dealer_hand_list` is not known until the end of the player's turn
+`[<player_hand_list>, <dealer_hand_list>]` Do I need player statuses in here like bools for if they've busted or won? What about their hand sum?
 
 
