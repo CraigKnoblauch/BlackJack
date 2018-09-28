@@ -53,6 +53,8 @@ Player(12): 4, 8
 
 ## What is the state definition?
 Note that the second element of `dealer_hand_list` is not known until the end of the player's turn
-`[<player_hand_list>, <dealer_hand_list>]` Do I need player statuses in here like bools for if they've busted or won? What about their hand sum?
+```
+[<player_hand_list>, <player_hand_sum>, <dealer_hand_list>, <dealer_hand_sum>]
+``` 
 
 
