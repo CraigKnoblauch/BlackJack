@@ -57,4 +57,16 @@ Note that the second element of `dealer_hand_list` is not known until the end of
 [<player_hand_list>, <player_hand_sum>, <dealer_hand_list>, <dealer_hand_sum>]
 ``` 
 
+## What is/are the end condition(s)?
+* Player reaches a sum of 21                                  --> WIN
+* Player reaches a sum > 21                                   --> LOSS 
+* Player's sum is < 21 'AND' Player's sum is > dealer's sum   --> WIN
+* Player's sum is < 21 'AND' Player's sum is < dealer's sum   --> LOSS
+* Player's sum is == dealer's sum                             --> LOSS
+    * Technically this is a tie, for simplicity, it's labeled as a LOSS here
 
+## What is the reward structure?
+We'll do a simple reward structure. 
+* +10 for winning
+* -10 for losing
+There's the oppurtunity to make this more complicated with the addition of betting 
