@@ -49,13 +49,24 @@ Dealer(): A, X
 Player(12): 4, 8
 ```
 ## What are the actions?
-`["hit", "stay"]`
+`["stay", "hit"]`
+
+### How will the action space be defined?
+This is a discrete action space constrained to 2 possibilites. We should be able to simply call the spaces API
+```
+action_space = spaces.Discrete(2)
+```
+0 for stay, 1 for hit
 
 ## What is the state definition?
 Note that the second element of `dealer_hand_list` is not known until the end of the player's turn
 ```
 [<player_hand_list>, <player_hand_sum>, <dealer_hand_list>, <dealer_hand_sum>]
 ``` 
+Even though, in a real game, the deck would shrink, I'm assuming an *infinite* deck. This way I don't have to account for this in the state space. It may be a worthwile TODO though.
+
+### How will the state space be defined?
+I took a look at the `spaces` src. I feel confident that I would be able to replicate a space without having to use one of their spaces. This would work out best for me, because gym doesn't have a space that fits this definition nicely.
 
 ## What is/are the end condition(s)?
 * Player reaches a sum of 21                                  --> WIN
