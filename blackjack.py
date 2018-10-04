@@ -240,6 +240,30 @@ class BlackJack(gym.Env):
         self.np_random, seed = seeding.np_random(seed)
         return [seed]
 
+    def reset(self):
+        # Init the player and the dealer's hand
+        player_hand = random.sample( list(deck), 2 ) 
+        dealer_hand = random.sample( list(deck), 2 ) 
+
+        player_sum = self.getSum(player_hand)
+        dealer_sum = self.getSum(dealer_hand)
+
+        # I need a way to track if the dealer has flipped over his card
+        # To do this, the first position of the dealer's hand will be used 
+        # to indicate. If index 0 of the dealer's hand is 0, he as not flipped
+        # his card, if it is < 0, he has. This assures the sum function cannot confuse
+        # the object in the first postion with a card.
+        (dealer_hand).insert(0, 0)
+
+        self.action_space = spaces.Discrete(2) # 0 is stay, 1 is hit
+        self.observation_space = [player_hand,
+                                  player_sum,
+                                  dealer_hand,
+                                  dealer_sum
+                                  ]
+
+        self.observation = self.observation_space # I think my observation understanding is breaking down
+
         
 
     
