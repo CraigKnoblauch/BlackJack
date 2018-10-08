@@ -16,7 +16,7 @@ class Hand:
 
     def determineQuality(self, game='blackjack'):
         if game == 'blackjack':
-            quality = self.blackjackSum()
+            quality = self.__blackjackSum()
 
         return quality
 
@@ -41,7 +41,7 @@ class Hand:
 
         return (self.__cards)[cardi]
 
-    def blackjackSum(self):
+    def __blackjackSum(self):
         total = 0
         for i, card in enumerate(self.__cards):
             if card.isFaceDown():
@@ -69,9 +69,9 @@ class Hand:
                 elif card.getName() == '10' or card.getName() == 'J' or card.getName() == 'Q' or card.getName() == 'K':
                     total += 10
                 else: # This is an ace
-                    total += self.blackjackAceValue(total)
+                    total += self.__blackjackAceValue(total)
 
-    def blackjackAceValue(self, total):
+    def __blackjackAceValue(self, total):
         value = 1
         if total + 11 <= 21:
             value = 11
