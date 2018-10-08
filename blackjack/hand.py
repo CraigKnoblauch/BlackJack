@@ -27,8 +27,19 @@ class Hand:
         return self.__quality
 
     # Theory here is that if you try to loop through an object, you'll loop through the cards
-    def __iter__:
-        return self.__cards
+    def __iter__(self):
+        self.cardi = 0
+        return self
+
+    def __next__(self):
+        cardi = self.cardi
+
+        if cardi >= len(self.__cards):
+            raise StopIteration
+
+        self.cardi = cardi + 1
+
+        return (self.__cards)[cardi]
 
     def blackjackSum(self):
         total = 0
@@ -39,31 +50,30 @@ class Hand:
             else:
                 if card.getName() == '1':
                     total += 1
-                else if card.getName() == '2':
+                elif card.getName() == '2':
                     total += 2
-                else if card.getName() == '3':
+                elif card.getName() == '3':
                     total += 3
-                else if card.getName() == '4':
+                elif card.getName() == '4':
                     total += 4
-                else if card.getName() == '5':
+                elif card.getName() == '5':
                     total += 5
-                else if card.getName() == '6':
+                elif card.getName() == '6':
                     total += 6
-                else if card.getName() == '7':
+                elif card.getName() == '7':
                     total += 7
-                else if card.getName() == '8':
+                elif card.getName() == '8':
                     total += 8
-                else if card.getName() == '9':
+                elif card.getName() == '9':
                     total += 9
-                else if card.getName() == '10' or card.getName() == 'J' or card.getName() == 'Q' or card.getName() == 'K':
+                elif card.getName() == '10' or card.getName() == 'J' or card.getName() == 'Q' or card.getName() == 'K':
                     total += 10
                 else: # This is an ace
                     total += self.blackjackAceValue(total)
 
     def blackjackAceValue(self, total):
         value = 1
-        if total + 11 <= 21
+        if total + 11 <= 21:
             value = 11
 
         return value
-
