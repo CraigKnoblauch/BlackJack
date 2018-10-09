@@ -6,6 +6,7 @@ class Table:
     def __init__(self, game):
         self.__deck = Deck()
         self.__dealer = Dealer()
+        self.__game = game
 
         if game == 'blackjack':
             self.__players = [Player()] # Start with one player
@@ -26,3 +27,9 @@ class Table:
 
     def addPlayer(self, player):
         (self.__players).append(player)
+        
+    def getGame(self):
+        return self.__game
+    
+    def setGame(self, game):
+        self.__game = game
