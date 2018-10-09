@@ -1,4 +1,4 @@
-import Deck
+import deck
 from participant import *
 
 class Table:
@@ -12,6 +12,7 @@ class Table:
             self.__players = [Player()] # Start with one player
         else:
             # TODO: idk, throw a not supported arg or something
+            pass
 
     def getDeck(self):
         return self.__deck

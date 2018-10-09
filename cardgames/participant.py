@@ -1,11 +1,14 @@
-from hand import Hand
-import Deck
-import Card
+from abc import ABC, abstractmethod
 
-class Participant():
+from hand import Hand
+import deck
+import card
+
+class Participant(ABC):
 
     def __init__(self, hand):
         self.__hand = hand
+        ABC.__init__()
 
     def getHand(self):
         return self.__hand
