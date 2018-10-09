@@ -38,7 +38,7 @@ class Deck():
 
     def draw(self):
         if self.__infinite:
-            drawn = random.sample( self.__deck, 1 )
+            drawn = random.choice(self.__deck)
         else:
             drawn = (self.__deck).pop() # TODO: implement support for this
 

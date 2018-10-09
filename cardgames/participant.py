@@ -8,7 +8,7 @@ class Participant(ABC):
 
     def __init__(self, hand):
         self.__hand = hand
-        ABC.__init__()
+        super().__init__()
 
     def getHand(self):
         return self.__hand
@@ -23,7 +23,7 @@ class Participant(ABC):
 class Player(Participant):
 
     def __init__(self, hand):
-        Participant.__init__(hand)
+        super().__init__(hand)
 
     def getRender(self):
         player_str = "Player ("
@@ -46,7 +46,7 @@ class Player(Participant):
 class Dealer(Participant):
 
     def __init__(self, hand):
-        Participant.__init__(hand)
+        super().__init__(hand)
         self.__deck = deck.Deck()
 
     def getRender(self):

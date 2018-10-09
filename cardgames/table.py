@@ -11,13 +11,14 @@ class Table:
         if game == 'blackjack':
 
             self.__deck = deck.Deck() # Assuming 1, infinite deck
+
+            # Make a hand for the player
+            player_hand = self.__blackjackPlayerHand()
+            self.__players = [participant.Player(player_hand)]  # Start with one player
             
             # Make a hand for the dealer
             dealer_hand = self.__blackjackDealerHand()
-            self.__dealer = dealer.Dealer( dealer_hand )
-
-            player_hand = self.__blackjackPlayerHand
-            self.__players = [ player.Player( player_hand )] # Start with one player
+            self.__dealer = participant.Dealer( dealer_hand )
 
         else:
             # TODO: idk, throw a not supported arg or something
@@ -50,7 +51,7 @@ class Table:
         cards.append( (self.__deck).draw() )
         cards.append( (self.__deck).draw() )
 
-        return hand.Hand(cards)
+        return hand.Hand(cards, self.__game)
 
     def __blackjackDealerHand(self):
         """
@@ -59,8 +60,8 @@ class Table:
         cards = []
         cards.append( (self.__deck).draw() )
         cards.append( (self.__deck).draw() )
-        cards[0] = (cards[0]).flip()
+        (cards[0]).flip()
 
-        return hand.Hand(cards)
+        return hand.Hand(cards, self.__game)
 
     

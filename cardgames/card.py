@@ -1,4 +1,4 @@
-class Card:
+class Card():
 
     def __init__(self, name, facedown=False):
         self.__name = name
