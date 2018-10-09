@@ -1,4 +1,4 @@
-from card import Card
+from cardgames.card import Card
 import random
 
 def __init__(self, num_decks=1, infinite=True):

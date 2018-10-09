@@ -2,6 +2,10 @@ import gym
 from gym import spaces
 from gym.utils import seeding 
 from cardgames.table import Table
+from cardgames.card import Card
+from cardgames.deck import Deck
+from cardgames.participant import *
+from cardgames.hand import Hand
 
 STAY = 0
 HIT = 1
