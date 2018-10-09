@@ -47,7 +47,7 @@ class Dealer(Participant):
 
     def __init__(self, hand):
         Participant.__init__(hand)
-        self.__deck = Deck() # TODO this is bad design, I'd like to give the dealer a table but that doesn't make sense in context of the larger design
+        self.__deck = Deck()
 
     def getRender(self):
         dealer_str = "Dealer ("

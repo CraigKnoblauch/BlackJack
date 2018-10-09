@@ -15,6 +15,15 @@ class Hand:
         (self.__cards).append(card)
         self.updateQuality()
 
+    def getCards(self):
+        return self.__cards
+
+    def setCards(self, cards):
+        self.__cards = cards
+
+    def flipCard(self, cardi):
+        ( (self.__cards)[cardi] ).flip()
+
     def determineQuality(self):
         if self.__game == 'blackjack':
             quality = self.__blackjackSum()
