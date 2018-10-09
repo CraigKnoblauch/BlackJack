@@ -1,7 +1,7 @@
 from cardgames import deck
 from cardgames import card
 from cardgames import hand
-from cardgames import *
+from cardgames import participant
 
 class Table:
 
@@ -10,14 +10,14 @@ class Table:
 
         if game == 'blackjack':
 
-            self.__deck = Deck() # Assuming 1, infinite deck
+            self.__deck = deck.Deck() # Assuming 1, infinite deck
             
             # Make a hand for the dealer
             dealer_hand = self.__blackjackDealerHand()
-            self.__dealer = Dealer( dealer_hand )
+            self.__dealer = dealer.Dealer( dealer_hand )
 
             player_hand = self.__blackjackPlayerHand
-            self.__players = [ Player( player_hand )] # Start with one player
+            self.__players = [ player.Player( player_hand )] # Start with one player
 
         else:
             # TODO: idk, throw a not supported arg or something
@@ -50,7 +50,7 @@ class Table:
         cards.append( (self.__deck).draw() )
         cards.append( (self.__deck).draw() )
 
-        return Hand(cards)
+        return hand.Hand(cards)
 
     def __blackjackDealerHand(self):
         """
@@ -61,6 +61,6 @@ class Table:
         cards.append( (self.__deck).draw() )
         cards[0] = (cards[0]).flip()
 
-        return Hand(cards)
+        return hand.Hand(cards)
 
     

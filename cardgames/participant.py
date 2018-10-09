@@ -47,7 +47,7 @@ class Dealer(Participant):
 
     def __init__(self, hand):
         Participant.__init__(hand)
-        self.__deck = Deck()
+        self.__deck = deck.Deck()
 
     def getRender(self):
         dealer_str = "Dealer ("

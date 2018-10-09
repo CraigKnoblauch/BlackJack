@@ -2,23 +2,23 @@ from cardgames import card
 import random
 
 class Deck():
-    
-    def __init__(self, num_decks=1, infinite=True):
-        self.__two = Card('2')
-        self.__three = Card('3')
-        self.__four = Card('4')
-        self.__five = Card('5')
-        self.__six = Card('6')
-        self.__seven = Card('7')
-        self.__eight = Card('8')
-        self.__nine = Card('9')
-        self.__ten = Card('10')
-        self.__jack = Card('J')
-        self.__queen = Card('Q')
-        self.__king = Card('K')
-        self.__ace = Card('A')
 
-        # Make a deck of the cards
+    def __init__(self, num_decks=1, infinite=True):
+        self.__two = card.Card('2')
+        self.__three = card.Card('3')
+        self.__four = card.Card('4')
+        self.__five = card.Card('5')
+        self.__six = card.Card('6')
+        self.__seven = card.Card('7')
+        self.__eight = card.Card('8')
+        self.__nine = card.Card('9')
+        self.__ten = card.Card('10')
+        self.__jack = card.Card('J')
+        self.__queen = card.Card('Q')
+        self.__king = card.Card('K')
+        self.__ace = card.Card('A')
+
+        # Make a deck of the card.Cards
         self.__deck = [ self.__two, self.__two, self.__two, self.__two,
                         self.__three, self.__three, self.__three, self.__three,
                         self.__four, self.__four, self.__four, self.__four,
