@@ -1,7 +1,7 @@
-from cardgames.deck import Deck
-from cardgames.card import Card
-from cardgames.hand import Hand
-from cardgames.participant import *
+from cardgames import deck
+from cardgames import card
+from cardgames import hand
+from cardgames import *
 
 class Table:
 

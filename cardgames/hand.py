@@ -1,4 +1,4 @@
-from cardgames.card import Card
+from cardgames import card
 # Ugh, doing a game='blackjack' is a really bad way of doing this
 class Hand:
 

@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 
-from hand import Hand
-import deck
-import card
+from cardgames import hand
+from cardgames import deck
+from cardgames import card
 
 class Participant(ABC):
 
