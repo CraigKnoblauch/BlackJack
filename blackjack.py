@@ -70,7 +70,7 @@ class BlackJack(gym.Env):
 
             done = True
 
-            return self.observation_space, done, reward, {}
+        return self.observation_space, done, reward, {}
 
     
     def render(self):
