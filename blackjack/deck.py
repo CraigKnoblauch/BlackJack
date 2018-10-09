@@ -1,21 +1,20 @@
-from card import *
+from card import Card
 import random
 
-def __init__(self):
-    self.__two = Card('2', 2)
-    self.__three = Card('3', 3)
-    self.__four = Card('4', 4)
-    self.__five = Card('5', 5)
-    self.__six = Card('6', 6)
-    self.__seven = Card('7', 7)
-    self.__eight = Card('8', 8)
-    self.__nine = Card('9', 9)
-    self.__ten = Card('10', 10)
-    self.__jack = Card('J', 10)
-    self.__queen = Card('Q', 10)
-    self.__king = Card('K', 10)
-
-    self.__ace = # Crap, we need to be cognizant of a hand to do this
+def __init__(self, num_decks=1, infinite=True):
+    self.__two = Card('2')
+    self.__three = Card('3')
+    self.__four = Card('4')
+    self.__five = Card('5')
+    self.__six = Card('6')
+    self.__seven = Card('7')
+    self.__eight = Card('8')
+    self.__nine = Card('9')
+    self.__ten = Card('10')
+    self.__jack = Card('J')
+    self.__queen = Card('Q')
+    self.__king = Card('K')
+    self.__ace = Card('A')
 
     # Make a deck of the cards
     self.__deck = [ self.__two, self.__two, self.__two, self.__two,
@@ -32,7 +31,22 @@ def __init__(self):
                     self.__king, self.__king, self.__king, self.__king,
                     self.__ace, self.__ace, self.__ace, self.__ace ]
 
-    self.__num_decks = 1
+    self.__num_decks = num_decks
+    self.__infinite = infinite
+
+def draw(self):
+    if self.__infinite:
+        drawn = random.sample( self.__deck, 1 )
+    else:
+        drawn = (self.__deck).pop() # TODO: implement support for this
+
+    return drawn
+
+def shuffle(self):
+    random.shuffle( self.__deck )
+
+def getDeck(self):
+    return self.__deck
 
 def getNumDecks(self):
     return self.__num_decks
@@ -40,5 +54,8 @@ def getNumDecks(self):
 def setNumDecks(self, num_decks):
     self.__num_decks = num_decks
 
-def draw(self):
-    return random.sample( self.__deck, 1 )
+def isInfinite(self):
+    return self.__infinite
+
+def setInfinite(self, infinite):
+    self.__infinite = infinite
