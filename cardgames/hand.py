@@ -3,25 +3,26 @@ from card import Card
 # Ugh, doing a game='blackjack' is a really bad way of doing this
 class Hand:
 
-    def __init__(self, cards):
+    def __init__(self, cards, game):
         """
         A hand must start with a list of cards
         """
         self.__cards = cards
+        self.__game = game
         self.__quality = self.determineQuality() # if quality is < 0, quality is unknown
 
     def addCard(self, card):
         (self.__cards).append(card)
         self.updateQuality()
 
-    def determineQuality(self, game='blackjack'):
-        if game == 'blackjack':
+    def determineQuality(self):
+        if self.__game == 'blackjack':
             quality = self.__blackjackSum()
 
         return quality
 
     def updateQuality(self):
-        self.__quality = self.determineQuality(game='blackjack')
+        self.__quality = self.determineQuality()
 
     def getQuality(self):
         return self.__quality
