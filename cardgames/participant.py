@@ -7,14 +7,14 @@ from cardgames import card
 class Participant(ABC):
 
     def __init__(self, hand):
-        self.__hand = hand
+        self.hand = hand
         super().__init__()
 
     def getHand(self):
-        return self.__hand
+        return self.hand
 
     def setHand(self, hand):
-        self.__hand = hand
+        self.hand = hand
 
     @abstractmethod
     def getRender(self):
@@ -29,13 +29,13 @@ class Player(Participant):
         player_str = "Player ("
 
         # If the quality is known, add it to the render
-        quality = (self.__hand).getQuality()
+        quality = (self.hand).getQuality()
         if quality >= 0:
             player_str += str(quality)
 
         player_str += "): "
 
-        for card in self.__hand:
+        for card in self.hand:
             if card.isFaceDown():
                 player_str += "X "
             else:
@@ -53,13 +53,13 @@ class Dealer(Participant):
         dealer_str = "Dealer ("
 
         # If the quality is known, add it to the render
-        quality = (self.__hand).getQuality()
+        quality = (self.hand).getQuality()
         if quality >= 0:
             dealer_str += str(quality)
 
         dealer_str += "): "
 
-        for card in self.__hand:
+        for card in self.hand:
             if card.isFaceDown():
                 dealer_str += "X "
             else:

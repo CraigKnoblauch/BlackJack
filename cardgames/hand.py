@@ -81,6 +81,8 @@ class Hand:
                 else: # This is an ace
                     total += self.__blackjackAceValue(total)
 
+        return total
+
     def __blackjackAceValue(self, total):
         value = 1
         if total + 11 <= 21:

@@ -16,7 +16,7 @@ class BlackJack(gym.Env):
         self.__table = Table('blackjack')
         self.action_space = spaces.Discrete(2) # 0 for stay, 1 for hit
         self.__dealer = (self.__table).getDealer()
-        self.__player = (self.__table).getPlayer()
+        self.__player = (self.__table).getPlayer(0)
 
         self.observation_space = [ (self.__player).getHand().getQuality(),
                                    (self.__dealer).getHand().getQuality() ]
@@ -55,7 +55,7 @@ class BlackJack(gym.Env):
                 card = (self.__dealer).deal()
                 (self.__dealer).getHand().addCard(card)
                 self.__updateDealerState( (self.__dealer).getHand().getQuality() )
-                if self.__isBust( (self.__dealer).getHand().getQuality() ):
+                if self.__isBust( (self.__dealer).getHand() ):
                     done = True
                     reward = 10
 
