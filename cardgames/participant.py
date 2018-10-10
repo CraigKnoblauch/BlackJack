@@ -41,7 +41,7 @@ class Player(Participant):
             else:
                 player_str += (card.getName() + ' ')
 
-        print(player_str)
+        return player_str
 
 class Dealer(Participant):
 
@@ -65,7 +65,7 @@ class Dealer(Participant):
             else:
                 dealer_str += (card.getName() + ' ')
 
-        print(dealer_str)
+        return dealer_str
 
     def deal(self):
         return (self.__deck).draw()

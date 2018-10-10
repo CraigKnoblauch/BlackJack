@@ -44,9 +44,8 @@ class BlackJack(gym.Env):
                 reward = -10
 
         if (not done) and (action == STAY): # Time for the dealer to go
-            # Flip the cards that need flipping
-            for i, card in enumerate( (self.__dealer).getHand() ):
-                (self.__dealer).getHand().flipCard(i)
+            # Flip the first card
+            (self.__dealer).getHand().flipCard(0)
 
             (self.__dealer).getHand().updateQuality()
                 
@@ -70,6 +69,10 @@ class BlackJack(gym.Env):
 
             done = True
 
+        # The player has hit, and not bust
+        if not done:
+            reward = 10
+
         return self.observation_space, done, reward, {}
 
     
@@ -81,7 +84,7 @@ class BlackJack(gym.Env):
         self.__table = Table('blackjack')
         self.action_space = spaces.Discrete(2) # 0 for stay, 1 for hit
         self.__dealer = (self.__table).getDealer()
-        self.__player = (self.__table).getPlayer()
+        self.__player = (self.__table).getPlayer(0)
 
         self.observation_space = [ (self.__player).getHand().getQuality(),
                                    (self.__dealer).getHand().getQuality() ]
