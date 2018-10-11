@@ -10,7 +10,7 @@ class Table:
 
         if game == 'blackjack':
 
-            self.__deck = deck.Deck() # Assuming 1, infinite deck
+            self.__deck = deck.Deck(infinite= False) # Assuming 1 deck
 
             # Make a hand for the player
             player_hand = self.__blackjackPlayerHand()
