@@ -71,9 +71,9 @@ class BlackJack(gym.Env):
 
         # The player has hit, and not bust
         if not done:
-            reward = 10
+            reward = 0
 
-        return self.observation_space, done, reward, {}
+        return self.observation_space, reward, done, {}
 
     
     def render(self):
