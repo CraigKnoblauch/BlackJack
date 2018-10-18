@@ -1,8 +1,6 @@
 # Many thanks to the tutorial I followed at https://www.youtube.com/watch?v=OYhFoMySoVs&t=0s&list=WL&index=24
 
-import os
 import random
-import gym
 import numpy as np
 from collections import deque
 from keras.models import Sequential
@@ -34,7 +32,7 @@ class DQNAgent:
         model = Sequential()
 
         # Hidden layers
-        model.add(Dense(24, input_dim=state_size, activation='relu'))
+        model.add(Dense(24, input_dim=self.state_size, activation='relu'))
         model.add(Dense(24, activation='relu'))
 
         # Input layer
