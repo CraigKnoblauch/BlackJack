@@ -6,6 +6,7 @@ from cardgames.card import Card
 from cardgames.deck import Deck
 from cardgames.participant import *
 from cardgames.hand import Hand
+import numpy as np
 
 STAY = 0
 HIT = 1
@@ -18,8 +19,13 @@ class BlackJack(gym.Env):
         self.__dealer = (self.__table).getDealer()
         self.__player = (self.__table).getPlayer(0)
 
-        self.observation_space = [ (self.__player).getHand().getQuality(),
-                                   (self.__dealer).getHand().getQuality() ]
+        self.observation_space = spaces.Box(low=np.array(0), high=np.array(52), dtype=np.int32)
+
+        self.state = np.array( [ (self.__player).getHand().getQuality(),
+                                (self.__dealer).getHand().getQuality() ] )
+
+        # self.observation_space = [ (self.__player).getHand().getQuality(),
+        #                            (self.__dealer).getHand().getQuality() ]
         
         self.seed() # Based on other space src I've seen you need this
 
@@ -27,10 +33,10 @@ class BlackJack(gym.Env):
         return hand.getQuality() > 21
 
     def __updatePlayerState(self, quality):
-        (self.observation_space)[0] = quality
+        (self.state)[0] = quality
 
     def __updateDealerState(self, quality):
-        (self.observation_space)[1] = quality
+        (self.state)[1] = quality
 
     def step(self, action):
         done = False
@@ -73,7 +79,7 @@ class BlackJack(gym.Env):
         if not done:
             reward = 0
 
-        return self.observation_space, reward, done, {}
+        return self.state, reward, done, {}
 
     
     def render(self):
@@ -86,10 +92,14 @@ class BlackJack(gym.Env):
         self.__dealer = (self.__table).getDealer()
         self.__player = (self.__table).getPlayer(0)
 
-        self.observation_space = [ (self.__player).getHand().getQuality(),
-                                   (self.__dealer).getHand().getQuality() ]
+        self.observation_space = spaces.Box(low=np.array(0), high=np.array(52), dtype=np.int32)
+
+        self.state = np.array([(self.__player).getHand().getQuality(),
+                               (self.__dealer).getHand().getQuality()])
         
         self.seed() # Based on other space src I've seen you need this
+
+        return self.state
 
     # Taken from the various environments available at github.com/openai/gym
     def seed(self, seed=None):
